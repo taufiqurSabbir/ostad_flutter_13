@@ -87,6 +87,24 @@ class LoginPage extends StatelessWidget {
                             }
                           },
                           child: Text('Submit'))),
+
+                  // Navigator name
+                  ElevatedButton(onPressed: (){
+                    Navigator.pushNamed(context, 'btns');
+                  }, child: Text('BTNS')),
+
+                  ElevatedButton(onPressed: (){
+                    Navigator.pushReplacementNamed(context, 'home');
+                  }, child: Text('home')),
+
+
+                  ElevatedButton(onPressed: (){
+                    Navigator.pushNamed(context, 'Dashboard', arguments: {
+                      'phone' : phoneController.text,
+                      'name': 'Taufiq'
+                    });
+                  }, child: Text('Dashboard')),
+
                   ElevatedButton(
                       onPressed: () {
                         Navigator.push(context,
@@ -94,12 +112,12 @@ class LoginPage extends StatelessWidget {
                       },
                       child: Text('Home-2')),
 
-                  ElevatedButton(
-                      onPressed: () {
-                        Navigator.pushReplacement(context,
-                            MaterialPageRoute(builder: (context) => Dashboard(phone: phoneController.text,)));
-                      },
-                      child: Text('Dashboard'))
+                  // ElevatedButton(
+                  //     onPressed: () {
+                  //       Navigator.pushReplacement(context,
+                  //           MaterialPageRoute(builder: (context) => Dashboard(phone: phoneController.text,)));
+                  //     },
+                  //     child: Text('Dashboard'))
                 ],
               ),
             ),
