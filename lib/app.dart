@@ -10,6 +10,7 @@ import 'module_8/dashboard.dart';
 import 'module_8/grid_v.dart';
 import 'module_9/class_2.dart';
 import 'module_9/class_2_stack.dart';
+import 'module_9/class_3.dart';
 import 'module_9/theme_test.dart';
 
 class MyApp extends StatelessWidget {
@@ -77,7 +78,7 @@ class MyApp extends StatelessWidget {
       themeMode: ThemeMode.light,
       title: 'Batch-13',
       home: ThemeTest(),
-      initialRoute: 'Stack',
+      initialRoute: 'widget',
       routes: {
         'home' : (context)=>Home(),
         'btns': (context)=>Buttongrp(),
@@ -85,6 +86,7 @@ class MyApp extends StatelessWidget {
         'Dashboard': (context)=>Dashboard(),
         'list': (context)=>FList(),
         'Stack': (context)=>Class2Stack(),
+        'widget': (context)=>OwnWidget(),
       },
     );
   }
