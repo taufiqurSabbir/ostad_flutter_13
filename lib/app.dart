@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_13/theme/app_theme.dart';
 
 import 'home.dart';
+import 'module_11/res.dart';
 import 'module_7/class_2_button.dart';
 import 'module_8/class_1_input.dart';
 import 'module_8/class_2.dart';
@@ -78,7 +79,7 @@ class MyApp extends StatelessWidget {
       themeMode: ThemeMode.light,
       title: 'Batch-13',
       home: ThemeTest(),
-      initialRoute: 'widget',
+      initialRoute: 'res',
       routes: {
         'home' : (context)=>Home(),
         'btns': (context)=>Buttongrp(),
@@ -87,6 +88,7 @@ class MyApp extends StatelessWidget {
         'list': (context)=>FList(),
         'Stack': (context)=>Class2Stack(),
         'widget': (context)=>OwnWidget(),
+        'res': (context)=>Res(),
       },
     );
   }
