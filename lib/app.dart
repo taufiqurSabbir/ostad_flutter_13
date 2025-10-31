@@ -3,11 +3,12 @@ import 'package:flutter_13/theme/app_theme.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'home.dart';
 import 'module_11/class_2.dart';
+import 'module_11/class_3.dart';
 import 'module_11/res.dart';
+import 'module_11/tobo.dart';
 import 'module_7/class_2_button.dart';
 import 'module_8/class_1_input.dart';
 import 'module_8/class_2.dart';
-import 'module_8/class_3.dart';
 import 'module_8/dashboard.dart';
 import 'module_8/grid_v.dart';
 import 'module_9/class_2.dart';
@@ -33,7 +34,7 @@ class MyApp extends StatelessWidget {
             themeMode: ThemeMode.light,
             title: 'Batch-13',
             home: ThemeTest(),
-            initialRoute: 'res_pakg',
+            initialRoute: 'Tobo',
             routes: {
               'home': (context) => Home(),
               'btns': (context) => Buttongrp(),
@@ -44,6 +45,8 @@ class MyApp extends StatelessWidget {
               'widget': (context) => OwnWidget(),
               'res': (context) => Res(),
               'res_pakg': (context) => ResPKG(),
+              'Class3': (context) => Class3(),
+              'Tobo': (context) => Todo(),
             },
           );
         });
