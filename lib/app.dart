@@ -6,6 +6,7 @@ import 'module_11/class_2.dart';
 import 'module_11/class_3.dart';
 import 'module_11/res.dart';
 import 'module_11/tobo.dart';
+import 'module_12/class_1.dart';
 import 'module_7/class_2_button.dart';
 import 'module_8/class_1_input.dart';
 import 'module_8/class_2.dart';
@@ -33,8 +34,8 @@ class MyApp extends StatelessWidget {
             darkTheme: AppTheme.darkTheme,
             themeMode: ThemeMode.light,
             title: 'Batch-13',
-            home: ThemeTest(),
-            initialRoute: 'Tobo',
+            home: StateClass(),
+            initialRoute: 'StateClass',
             routes: {
               'home': (context) => Home(),
               'btns': (context) => Buttongrp(),
@@ -47,6 +48,7 @@ class MyApp extends StatelessWidget {
               'res_pakg': (context) => ResPKG(),
               'Class3': (context) => Class3(),
               'Tobo': (context) => Todo(),
+              'StateClass': (context) => StateClass(),
             },
           );
         });
