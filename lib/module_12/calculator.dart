@@ -36,6 +36,9 @@ class _CalculatorState extends State<Calculator> {
         } else if (_ope == '÷') {
           _output =
           num2 != 0 ? (num1 / num2).toString() : 'Error';
+        }else if(_ope == '%'){
+              _output = (double.parse(_input)/100).toString();
+          _input = _output;
         }
       } else if(['+','-','*','÷'].contains(value)){
         num1 = double.parse(_input);
