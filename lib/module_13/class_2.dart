@@ -32,7 +32,6 @@ getchProducts();
     if(response.statusCode ==200){
       final jsonResponse = jsonDecode(response.body);
 
-
       setState(() {
         products = jsonResponse['data'];
         isLoading = false;
