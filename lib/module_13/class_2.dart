@@ -20,8 +20,6 @@ super.initState();
 getchProducts();
   }
 
-
-
   Future<void> getchProducts() async {
     final url = Uri.parse('http://35.73.30.144:2008/api/v1/ReadProduct');
     final response = await http.get(url);
