@@ -1,12 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:pin_code_fields/pin_code_fields.dart';
-import 'package:task_manager/ui/screens/reset_password_screen.dart';
 
 import '../widgets/screen_background.dart';
 import 'forget_password_verify_otp_screen.dart';
 
-class ForgetPasswordVerifyOtpScreen extends StatelessWidget {
-  const ForgetPasswordVerifyOtpScreen({super.key});
+class ResetPasswordScreen extends StatelessWidget {
+  const ResetPasswordScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -21,14 +19,14 @@ class ForgetPasswordVerifyOtpScreen extends StatelessWidget {
                 height: 150,
               ),
               Text(
-                'PIN Verification',
+                'Set Password',
                 style: Theme.of(context).textTheme.titleLarge,
               ),
               const SizedBox(
                 height: 10,
               ),
               Text(
-                'A 6 digits OTP sent to your email address',
+                'Password should be more than 6 letters and combination of numbers',
                 style: Theme.of(context)
                     .textTheme
                     .bodyLarge
@@ -37,30 +35,19 @@ class ForgetPasswordVerifyOtpScreen extends StatelessWidget {
               const SizedBox(
                 height: 10,
               ),
-              PinCodeTextField(
-                length: 6,
-                obscureText: false,
-                animationType: AnimationType.fade,
-                keyboardType: TextInputType.number,
-                pinTheme: PinTheme(
-                  shape: PinCodeFieldShape.box,
-                  borderRadius: BorderRadius.circular(7),
-                  fieldHeight: 50,
-                  fieldWidth: 40,
-                  activeFillColor: Colors.white,
-                  inactiveColor: Colors.grey.shade300,
-                  selectedColor: Colors.green
-                ),
-                animationDuration: Duration(milliseconds: 300),
-                backgroundColor: Colors.transparent,
-                appContext: context,
+              TextFormField(
+                decoration: InputDecoration(hintText: 'Password'),
+              ),
+              SizedBox(height: 15,),
+              TextFormField(
+                decoration: InputDecoration(hintText: 'Password'),
               ),
               const SizedBox(
                 height: 16,
               ),
               FilledButton(
                   onPressed: () {
-                    Navigator.push(context, MaterialPageRoute(builder: (context)=>ResetPasswordScreen()));
+                    Navigator.push(context, MaterialPageRoute(builder: (context)=>ForgetPasswordVerifyOtpScreen()));
                   },
                   child: Icon(Icons.arrow_circle_right_outlined)),
               const SizedBox(
