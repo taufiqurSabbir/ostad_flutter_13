@@ -23,7 +23,7 @@ factory UserModel.fromJson(Map<String,dynamic> jsonData){
        firstName: jsonData['firstName'],
        lastName: jsonData['lastName'],
        mobile: jsonData['mobile'],
-      photo: jsonData['mobile'] ?? '',
+      photo: jsonData['photo'] ?? '',
 
    );
 
@@ -36,6 +36,7 @@ factory UserModel.fromJson(Map<String,dynamic> jsonData){
     "firstName":firstName,
     "lastName":lastName,
     "mobile":mobile,
+    "photo" : photo
   };
  }
 }
