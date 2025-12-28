@@ -1,5 +1,8 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:task_manager/providers/auth_provider.dart';
+import 'package:task_manager/providers/network_provider.dart';
 import 'package:task_manager/ui/screens/sign_up_screen.dart';
 
 import '../../data/models/user_model.dart';
@@ -145,41 +148,26 @@ bool _signInProgress = false;
   }
 
   Future<void> _signIn()async{
-    setState(() {
-      _signInProgress = true;
-    });
+final networkProvider = Provider.of<NetworkProvider>(context,listen: false);
+final authProvider = Provider.of<AuthProvider>(context,listen: false);
 
-    Map<String,dynamic>requestBody = {
-      "email":_emailController.text,
-      "password":_passwordController.text,
-    };
+final result = await networkProvider.login(email: _emailController.text.trim(), password: _passwordController.text);
 
-    final ApiResponse response = await ApiCaller.postRequest(
-      url: Urls.loginUrl,
-      body: requestBody,
-    );
-
-    setState(() {
-      _signInProgress = false;
-    });
-
-    if(response.isSuccess){
-      UserModel model = UserModel.fromJson(response.responseData['data']);
-      String accessToken = response.responseData['token'];
-      await AuthController.saveUserData(model, accessToken);
-
-      _clearTextField();
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('Login success..!'),
-          backgroundColor: Colors.green,
-          duration: Duration(seconds: 5),
-        ),
-      );
-      Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>MainNavBarHolderScreen()));
-    }else{
+if(result != null ){
+  await authProvider.saveUserData(result['user'], result['token']);
+  _clearTextField();
+  ScaffoldMessenger.of(context).showSnackBar(
+    SnackBar(content: Text('Login success..!'),
+      backgroundColor: Colors.green,
+      duration: Duration(seconds: 5),
+    ),
+  );
+  Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>MainNavBarHolderScreen()));
+} else{
 
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text(response.responseData['data']),
+
+        SnackBar(content: Text(networkProvider.errorMessage ?? 'Something wrong'),
           backgroundColor: Colors.red,
           duration: Duration(seconds: 5),
         ),

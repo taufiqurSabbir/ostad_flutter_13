@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:task_manager/data/services/api_caller.dart';
 import 'package:task_manager/data/utils/urls.dart';
 
+import '../../providers/network_provider.dart';
 import '../widgets/screen_background.dart';
 import 'forget_password_verify_otp_screen.dart';
 
@@ -193,28 +195,16 @@ bool _signUpInProgress = false;
   }
 
   Future<void> _signUp()async{
-    setState(() {
-      _signUpInProgress = true;
-    });
+    final networkProvider = Provider.of<NetworkProvider>(context,listen: false);
 
-    Map<String,dynamic>requestBody = {
-      "email":_emailController.text,
-      "firstName":_firstNameController.text,
-      "lastName":_lastNameController.text,
-      "mobile":_mobileController.text,
-      "password":_passwordController.text,
-    };
+    final result = networkProvider.register(
+    email: _emailController.text.trim(),
+    firstName: _firstNameController.text.trim(),
+    lastName: _lastNameController.text.trim(),
+    mobile: _mobileController.text.trim(),
+    password: _passwordController.text.trim());
 
-    final ApiResponse response = await ApiCaller.postRequest(
-      url: Urls.registrationUrl,
-      body: requestBody,
-    );
-
-    setState(() {
-      _signUpInProgress = false;
-    });
-
-    if(response.isSuccess){
+    if(result != null){
       _clearTextField();
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(content: Text('Sign Up success..!'),
@@ -223,10 +213,11 @@ bool _signUpInProgress = false;
         ),
 
       );
+      Navigator.pop(context);
     }else{
 
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text(response.responseData['data']),
+        SnackBar(content: Text(networkProvider.errorMessage ?? 'Something wrong'),
           backgroundColor: Colors.red,
           duration: Duration(seconds: 5),
         ),
