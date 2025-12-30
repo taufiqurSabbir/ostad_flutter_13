@@ -1,6 +1,8 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:task_manager/providers/auth_provider.dart';
 import 'package:task_manager/ui/controller/auth_controller.dart';
 
 import '../screens/update_profile_screen.dart';
@@ -11,7 +13,10 @@ class TMAppBar extends StatelessWidget implements PreferredSizeWidget {
 
   @override
   Widget build(BuildContext context) {
-    final profilePhoto = AuthController.userModel!.photo;
+    final authProvider = Provider.of<AuthProvider>(context);
+    final userModel = authProvider.userModel;
+
+    final profilePhoto = userModel?.photo ?? '';
     return AppBar(
       backgroundColor: Colors.green,
       title: InkWell(
@@ -28,13 +33,13 @@ class TMAppBar extends StatelessWidget implements PreferredSizeWidget {
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text('${AuthController.userModel!.firstName} ${AuthController.userModel!.lastName}',
+                Text('${userModel!.firstName} ${userModel.lastName}',
                   style: Theme.of(context).textTheme.titleSmall?.copyWith(
                       color: Colors.white
                   ),
                 ),
 
-                Text(AuthController.userModel!.email,
+                Text(userModel.email,
                   style: Theme.of(context).textTheme.bodySmall?.copyWith(
                       color: Colors.white
                   ),
@@ -46,7 +51,7 @@ class TMAppBar extends StatelessWidget implements PreferredSizeWidget {
       ),
       actions: [
         IconButton(onPressed: (){
-          AuthController.clearUserData();
+          authProvider.logout();
           Navigator.pushNamedAndRemoveUntil(context, '/Login', (predicate)=>false);
         }, icon: Icon(Icons.logout))
       ],
