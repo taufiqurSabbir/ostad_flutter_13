@@ -1,0 +1,40 @@
+name: task_manager
+description: "A new Flutter project."
+
+publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.1.5 <4.0.0'
+
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  cupertino_icons: ^1.0.8
+  pin_code_fields: ^8.0.1
+  image_picker: any
+  http: ^1.6.0
+  logger: ^2.6.2
+  shared_preferences:
+  provider: ^6.1.2 
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+
+  flutter_lints: ^5.0.0
+  flutter_svg:
+
+
+flutter:
+
+
+  uses-material-design: true
+
+  assets:
+    - assets/images/
+
