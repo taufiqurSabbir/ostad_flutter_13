@@ -27,7 +27,7 @@ class VottingPage extends StatelessWidget {
                 crossAxisCount: 2,
                 mainAxisSpacing: 16,
               crossAxisSpacing: 10,
-              childAspectRatio: 0.80
+              childAspectRatio: 0.60
             ),
             itemCount: 2,
             itemBuilder: (context,index){
